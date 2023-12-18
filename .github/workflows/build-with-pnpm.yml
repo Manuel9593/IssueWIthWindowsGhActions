@@ -23,7 +23,7 @@ jobs:
               with:
                 node-version: '18.x'
                 cache: 'pnpm'
-                cache-dependency-path: '/pnpm/pnpm-lock.yaml'
+                cache-dependency-path: 'pnpm/pnpm-lock.yaml'
 
             - name: Position to directory
               run: cd pnpm
@@ -33,3 +33,6 @@ jobs:
 
             - name: Build app
               run: pnpm run build
+
+            - name: Disable corepack
+              run: corepack disable
