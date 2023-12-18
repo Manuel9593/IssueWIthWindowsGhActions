@@ -1,8 +1,5 @@
 name: Build with Yarn
-on:
-    push:
-        branches:
-            - issue/yarn
+on: push
 
 jobs:
     build:
