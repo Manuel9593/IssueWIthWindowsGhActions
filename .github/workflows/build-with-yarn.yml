@@ -5,13 +5,14 @@ jobs:
     build:
         runs-on: windows-latest
         steps:
-            - uses: actions/checkout@v4
+            - name: Checkout repository
+              uses: actions/checkout@v4
 
             - name: Enable corepack
               run: corepack enable
 
             - name: Install Yarn 4
-              uses: corepack prepare yarn@4 --activate
+              run: corepack prepare yarn@4 --activate
 
             - uses: actions/setup-node@v4
               with:
