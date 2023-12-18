@@ -13,8 +13,7 @@ jobs:
             - name: Install Yarn 4
               uses: corepack prepare yarn@4 --activate
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
+            - uses: actions/setup-node@v4
               with:
                   node-version: '20.9.0'
                   cache: 'yarn'
