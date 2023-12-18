@@ -1,0 +1,35 @@
+name: Build with PNPM
+on:
+    push:
+        branches:
+            - issue/pnpm
+
+jobs:
+    build:
+        name: build pnpm
+        runs-on: windows-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Enable corepack
+              run: corepack enable
+
+            - name: Install PNPM
+              run: corepack prepare pnpm@latest
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: '18.x'
+                cache: 'pnpm'
+                cache-dependency-path: '/pnpm/pnpm-lock.yaml'
+
+            - name: Position to directory
+              run: cd pnpm
+
+            - name: Install dependencies
+              run: pnpm install
+
+            - name: Build app
+              run: pnpm run build
