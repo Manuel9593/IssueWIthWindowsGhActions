@@ -12,7 +12,7 @@ jobs:
               run: corepack enable
 
             - name: Install Yarn 4
-              run: corepack prepare yarn@4 --activate
+              run: corepack prepare yarn@stable --activate
 
             - uses: actions/setup-node@v4
               with:
