@@ -12,6 +12,9 @@ jobs:
             - name: Checkout repository
               uses: actions/checkout@v4
 
+            - name: Position to directory
+              run: cd pnpm
+
             - name: Enable corepack
               run: corepack enable
 
@@ -24,9 +27,6 @@ jobs:
                 node-version: '18.x'
                 cache: 'pnpm'
                 cache-dependency-path: 'pnpm/pnpm-lock.yaml'
-
-            - name: Position to directory
-              run: cd pnpm
 
             - name: Install dependencies
               run: pnpm install
