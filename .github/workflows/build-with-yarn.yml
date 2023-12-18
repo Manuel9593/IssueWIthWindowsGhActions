@@ -1,0 +1,35 @@
+name: Build with Yarn
+on:
+    push:
+        branches: [ 'issue/yarn' ]
+
+jobs:
+    build:
+        runs-on: windows-latest
+        steps:
+              - name: Checkout repository
+                uses: actions/checkout@v4
+
+              - name: Enable corepack
+                run: corepack enable
+
+              - name: Install Yarn 4
+                uses: corepack prepare yarn@4 --activate
+
+              - name: Setup Node.js
+                uses: actions/setup-node@v4
+                with:
+                    node-version: '20.9.0'
+                    cache: 'yarn'
+
+              - name: Position to directory
+                run: cd yarn
+
+              - name: Install dependencies
+                run: yarn install
+
+              - name: Build app
+                run: yarn run build
+
+              - name: Disable corepack
+                run: corepack disable
